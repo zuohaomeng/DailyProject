@@ -21,7 +21,7 @@ public class ProxyConsole {
      * cglib动态代理
      */
     private static void CglibProxy() {
-        System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "e:/proxy");
+        System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "./proxy");
         Enhancer enhancer = new Enhancer();
         //继承被代理类
         enhancer.setSuperclass(Animal.class);
