@@ -1,26 +1,19 @@
 package com.meng.feature.bean;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 
-@Setter
-@Getter
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Builder
 public class User implements Serializable {
     public String name;
     public int age;
     public User son;
     public User father;
-
-    public User() {
-    }
-
-    public User(String name, int age, User son) {
-        this.name = name;
-        this.age = age;
-        this.son = son;
-    }
 
     public User(String name, int age) {
         this.name = name;

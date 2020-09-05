@@ -1,18 +1,14 @@
-package com.meng.feature.chap01;
+package com.meng.feature.menu;
 
 
 import com.meng.feature.bean.User;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
 /**
@@ -20,7 +16,7 @@ import java.util.stream.Stream;
  * @Author: Hao.Zuo
  * @Date: 2019/12/5 12:48
  */
-public class StreamLearn {
+public class StreamAPI {
     public static List<User   > list = null;
 
     static {
