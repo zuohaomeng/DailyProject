@@ -19,6 +19,7 @@ public class Apple {
     private int weight = 0;
     private String color = "";
 
+
     public static boolean isGreen(Apple apple) {
         return "green".equals(apple.getColor());
     }
