@@ -8,6 +8,4 @@ package com.meng.daily.javabase.proxy;
 public interface SimpleInterface {
 
     void sayHello();
-
-
 }
