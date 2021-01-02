@@ -16,12 +16,14 @@ import static java.util.stream.Collectors.toList;
  */
 public class StreamTest {
     static List<String> stringList = new ArrayList<>();
+
     static {
         stringList.add("apple");
         stringList.add("pear");
         stringList.add("orange");
         stringList.add("banana");
     }
+
     public static void main(String[] args) {
         //通知使用了哪些但是
 //        split();
@@ -79,17 +81,18 @@ public class StreamTest {
                     return number2.stream()
                             .map(j -> new int[]{i, j});
                 }).filter(e -> (e[0] + e[1]) % 3 == 0)
-                .forEach(e->{
+                .forEach(e -> {
                     System.out.println(Arrays.toString(e));
                 });
     }
+
     /**
      * 查找和匹配
      */
-    public static void match(){
-        System.out.println(stringList.stream().allMatch(e->"apple".equals(e)));
-        System.out.println(stringList.stream().anyMatch(e->"apple".equals(e)));
-        System.out.println(stringList.stream().noneMatch(e->"apple1".equals(e)));
+    public static void match() {
+        System.out.println(stringList.stream().allMatch(e -> "apple".equals(e)));
+        System.out.println(stringList.stream().anyMatch(e -> "apple".equals(e)));
+        System.out.println(stringList.stream().noneMatch(e -> "apple1".equals(e)));
         Optional<String> first = stringList.stream().findFirst();
         Optional<String> any = stringList.stream().findAny();
         System.out.println(first.get());
@@ -99,13 +102,13 @@ public class StreamTest {
     /**
      * 归约
      */
-    public static void reduce(){
+    public static void reduce() {
         //求和
-        List<Integer> nums = Arrays.asList(4,5,3,9);
+        List<Integer> nums = Arrays.asList(4, 5, 3, 9);
         System.out.println(nums.stream().reduce(0, (a, b) -> a + b));
         //最大值和最小值
-        System.out.println(nums.parallelStream().reduce((a,b)->Math.min(a,b)).get());
-        System.out.println(nums.parallelStream().reduce((a,b)->Math.max(a,b)).get());
+        System.out.println(nums.parallelStream().reduce((a, b) -> Math.min(a, b)).get());
+        System.out.println(nums.parallelStream().reduce((a, b) -> Math.max(a, b)).get());
         System.out.println(nums.parallelStream().reduce(Integer::max).get());
     }
 

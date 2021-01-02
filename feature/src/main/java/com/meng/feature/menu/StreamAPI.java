@@ -17,7 +17,7 @@ import java.util.stream.Stream;
  * @Date: 2019/12/5 12:48
  */
 public class StreamAPI {
-    public static List<User   > list = null;
+    public static List<User> list = null;
 
     static {
         User s1 = new User("aa", 10);
@@ -52,9 +52,11 @@ public class StreamAPI {
 //        collectors();
         boxed();
     }
-    public static void boxed(){
+
+    public static void boxed() {
         return;
     }
+
     public static void collectors() {
         List<Integer> list1 = list.stream().map(User::getAge).collect(Collectors.toList());
         Set<Integer> list2 = list.stream().map(User::getAge).collect(Collectors.toSet());

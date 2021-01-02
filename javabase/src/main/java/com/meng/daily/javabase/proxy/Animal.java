@@ -7,7 +7,7 @@ package com.meng.daily.javabase.proxy;
  */
 public class Animal {
 
-    void sleep(){
+    void sleep() {
         System.out.println(">>>>>>>>>>>>sleep<<<<<<<<<<");
     }
 }
