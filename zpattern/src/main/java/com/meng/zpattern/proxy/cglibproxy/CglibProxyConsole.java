@@ -7,6 +7,7 @@ package com.meng.zpattern.proxy.cglibproxy;
  */
 public class CglibProxyConsole {
     public static void main(String[] args) {
-
+        CglibReader buyAgent = (CglibReader) new CglibBuyAgent().getInstance(CglibReader.class);
+        buyAgent.readBook();
     }
 }

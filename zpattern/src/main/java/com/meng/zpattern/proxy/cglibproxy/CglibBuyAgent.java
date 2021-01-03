@@ -24,9 +24,9 @@ public class CglibBuyAgent implements MethodInterceptor {
 
     /**
      *
-     * @param o
+     * @param o   字节码生成的代理类对象
      * @param method
-     * @param objects
+     * @param objects 方法参数
      * @param methodProxy
      * @return
      * @throws Throwable
@@ -35,7 +35,9 @@ public class CglibBuyAgent implements MethodInterceptor {
     public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
         System.out.println("读书增强了");
         System.out.println("o："+o.getClass());
+        System.out.println("method： "+method.getClass()+"\t"+method.getName());
         System.out.println("methodProxy："+methodProxy.getClass());
+
         //生成的是子类，去调用父类的逻辑
         return methodProxy.invokeSuper(o,objects);
     }
