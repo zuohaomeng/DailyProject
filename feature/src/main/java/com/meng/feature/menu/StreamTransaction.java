@@ -27,6 +27,7 @@ public class StreamTransaction {
             new Transaction(mario, 2012, 700),
             new Transaction(alan, 2012, 950)
     );
+
     public static void main(String[] args) {
         StreamTransaction streamTransaction = new StreamTransaction();
         part1();
@@ -37,24 +38,26 @@ public class StreamTransaction {
     /**
      * 找出2011年发生的所有交易，并交易额排序
      */
-    public static void part1(){
+    public static void part1() {
         System.out.println("找出2011年发生的所有交易，并交易额排序");
         transactions.stream()
-                .filter(e->2012==e.getYear())
+                .filter(e -> 2012 == e.getYear())
                 .sorted(Comparator.comparing(Transaction::getValue))
                 .forEach(System.out::println);
     }
-    public static void part2(){
+
+    public static void part2() {
         System.out.println("交易员都在哪些不同的城市");
         transactions.stream()
-                .map(e->e.getTraders().getCity())
+                .map(e -> e.getTraders().getCity())
                 .distinct()
                 .forEach(System.out::println);
     }
-    public static void part3(){
+
+    public static void part3() {
         System.out.println("查找所有来自剑桥的交易员，并按名字排序");
         transactions.stream()
-                .filter(e->e.getTraders().getCity().equals("Cambridge"))
+                .filter(e -> e.getTraders().getCity().equals("Cambridge"))
                 .sorted(Comparator.comparing(o -> o.getTraders().getName()))
                 .forEach(System.out::println);
     }

@@ -49,11 +49,10 @@ public class FilteringApples {
     }
 
 
-
-    public static List<Apple> filterApple(List<Apple> apples, Predicate<Apple> p){
+    public static List<Apple> filterApple(List<Apple> apples, Predicate<Apple> p) {
         List<Apple> appleList = new ArrayList<>();
-        for (Apple apple: apples) {
-            if(p.test(apple)){
+        for (Apple apple : apples) {
+            if (p.test(apple)) {
                 appleList.add(apple);
             }
         }
@@ -64,10 +63,10 @@ public class FilteringApples {
      * 相比于stream够更优秀的写法
      * 优点：适用于所有的List。不只是Apple这个类。
      */
-    public static <T> List<T> filter(List<T> list, Predicate<T> p){
+    public static <T> List<T> filter(List<T> list, Predicate<T> p) {
         List<T> result = new ArrayList<>();
-        for (T e:list) {
-            if(p.test(e)){
+        for (T e : list) {
+            if (p.test(e)) {
                 result.add(e);
             }
         }

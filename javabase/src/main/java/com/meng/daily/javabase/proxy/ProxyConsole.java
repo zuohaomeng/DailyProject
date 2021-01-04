@@ -36,7 +36,7 @@ public class ProxyConsole {
     /**
      * jdk动态代理
      */
-    public static void JDKProxy(){
+    public static void JDKProxy() {
         // 保存生成的代理类的字节码文件
         System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
 

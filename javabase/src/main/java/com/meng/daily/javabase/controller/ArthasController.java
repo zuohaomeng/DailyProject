@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("arthas")
 public class ArthasController {
     @GetMapping("get")
-    public Object get(){
+    public Object get() {
         return "success";
     }
 

@@ -13,10 +13,9 @@ import java.lang.reflect.Method;
  */
 public class MyMethodInterceptor implements MethodInterceptor {
     /**
-     *
-     * @param o 代理对象
-     * @param method 目标类中的方法
-     * @param objects 方法参数
+     * @param o           代理对象
+     * @param method      目标类中的方法
+     * @param objects     方法参数
      * @param methodProxy 代理方法的MethodProxy对象
      * @return
      * @throws Throwable
