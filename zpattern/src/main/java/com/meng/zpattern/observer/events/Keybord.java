@@ -4,7 +4,7 @@ package com.meng.zpattern.observer.events;
  * @author ZuoHao
  * @date 2021/1/5
  */
-public class Keybord extends EventLisenter{
+public class Keybord extends EventListener {
     public void down(){
 
     }

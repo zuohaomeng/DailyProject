@@ -5,15 +5,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
  * 监听器，它就是观察者
  * @author ZuoHao
  * @date 2021/1/5
  */
-public class EventLisenter {
+public class EventListener {
 
-    //JDK底层的Lisenter通常也是这样来设计的
-    protected Map<String,Event> events = new HashMap<String,Event>();
+    /**
+     * JDK底层的Listener通常也是这样来设计的
+     */
+    protected Map<String,Event> events = new HashMap();
 
     //事件名称和一个目标对象来触发事件
     public void addLisenter(String eventType,Object target){

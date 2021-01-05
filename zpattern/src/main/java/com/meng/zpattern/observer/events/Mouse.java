@@ -4,7 +4,7 @@ package com.meng.zpattern.observer.events;
  * @author ZuoHao
  * @date 2021/1/5
  */
-public class Mouse extends EventLisenter {
+public class Mouse extends EventListener {
 
     public void click(){
         System.out.println("调用单击方法");
