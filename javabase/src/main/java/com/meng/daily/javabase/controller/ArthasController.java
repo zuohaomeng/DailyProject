@@ -8,9 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 /**
- * @Description
- * @Author ZuoHao
- * @Date 2020/9/24 19:15
+ * @author ZuoHao
+ * @date 2020/9/24 19:15
  */
 @RestController
 @RequestMapping("arthas")
