@@ -53,7 +53,7 @@ public class ArthasController implements ApplicationContextAware {
         aspectService.successReturn();
         return "success";
     }
-    @GetMapping
+    @GetMapping("returnException")
     private Object returnException(){
         try {
             aspectService.returnException();

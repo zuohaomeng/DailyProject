@@ -33,9 +33,10 @@ public class MyAnnotationAspect {
     public void afterReturn(JoinPoint joinPoint){
         System.out.println("afterReturn");
     }
-    @AfterThrowing("pointcut()")
-    public void afterThrow(){
+    @AfterThrowing(value = "pointcut()",throwing = "ex")
+    public void afterThrow(JoinPoint joinPoint, Exception ex){
         System.out.println("afterThrow");
+        System.out.println(ex.getMessage());
     }
 
     @Around("pointcut()")

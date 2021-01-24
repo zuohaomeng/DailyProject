@@ -1,7 +1,6 @@
 package com.meng.daily.javabase;
 
 
-import com.meng.daily.javabase.service.impl.LazyInitServiceImpl;
 
 /**
  * @author ZuoHao
