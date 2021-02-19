@@ -6,7 +6,11 @@
 
     <groupId>com.meng</groupId>
     <artifactId>dailyproject</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>zcommon</module>
+    </modules>
 
 
 </project>

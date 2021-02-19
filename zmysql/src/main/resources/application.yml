@@ -64,7 +64,7 @@ spring:
           log-slow-sql: true
 mybatis-plus:
   mapper-locations: classpaths:mapper/*.xml
-  type-aliases-package: com.meng.zmysql.dao
+  type-aliases-package: com.meng.zmysql.entity
   configuration:
 #    设置mybatis的一级缓存默认级别，默认开启且为session级别
 #    local-cache-scope: session

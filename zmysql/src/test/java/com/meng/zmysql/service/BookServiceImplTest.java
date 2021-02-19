@@ -1,16 +1,16 @@
 package com.meng.zmysql.service;
 
-import com.meng.zmysql.dao.Book;
+import com.meng.zmysql.entity.Book;
 import com.meng.zmysql.mapper.BookMapper;
 import com.meng.zmysql.mapper.FruitMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.jupiter.api.Test;
+import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
 
 import javax.annotation.Resource;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author ZuoHao
@@ -24,7 +24,8 @@ class BookServiceImplTest {
     private FruitMapper fruitMapper;
     @Resource
     private SqlSessionFactory sessionFactory;
-
+    @Resource
+    private ApplicationContext applicationContext;
     @Test
     public void insert() {
         Book book = Book.builder().name("3").description("3").build();
@@ -35,6 +36,8 @@ class BookServiceImplTest {
 
     @Test
     public void get() {
+        applicationContext.getBean(SqlSessionFactory.class);
+        applicationContext.getBean(SqlSessionFactoryBean.class);
         SqlSession sqlSession = sessionFactory.openSession();
         BookMapper mapper = sqlSession.getMapper(BookMapper.class);
         System.out.println(mapper.selectById(1));
@@ -49,13 +52,8 @@ class BookServiceImplTest {
 
     @Test
     public void getCacheTwo(){
-        System.out.println(bookService.getByName("3"));
-        System.out.println(bookService.getByName("3"));
-        System.out.println(bookService.getByName("3"));
-        System.out.println("------------------------------");
-        System.out.println(fruitMapper.selectById(1));
-        System.out.println(fruitMapper.selectById(1));
-        System.out.println(fruitMapper.selectById(1));
 
+        fruitMapper.selectById(1);
+        fruitMapper.selectById(1);
     }
 }

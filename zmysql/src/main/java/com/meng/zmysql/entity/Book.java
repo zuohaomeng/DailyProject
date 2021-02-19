@@ -1,4 +1,4 @@
-package com.meng.zmysql.dao;
+package com.meng.zmysql.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;

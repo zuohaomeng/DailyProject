@@ -1,7 +1,7 @@
 package com.meng.zmysql.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.meng.zmysql.dao.Book;
+import com.meng.zmysql.entity.Book;
 import com.meng.zmysql.mapper.BookMapper;
 import org.springframework.stereotype.Service;
 
