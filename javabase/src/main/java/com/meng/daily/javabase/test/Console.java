@@ -1,6 +1,7 @@
 package com.meng.daily.javabase.test;
 
-import com.meng.daily.javabase.entity.Book;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @Description
@@ -9,11 +10,5 @@ import com.meng.daily.javabase.entity.Book;
  */
 public class Console {
     public static void main(String[] args) {
-        Book book = new Book();
-        book.setId(1394394161);
-        long memebrId = book.getId();
-        long ios = 1394394161L;
-        System.out.println(ios == memebrId);
-
     }
 }
