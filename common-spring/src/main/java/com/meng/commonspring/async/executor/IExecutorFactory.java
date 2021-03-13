@@ -1,5 +1,6 @@
 package com.meng.commonspring.async.executor;
 
+import com.alibaba.ttl.threadpool.TtlExecutors;
 import com.meng.commonspring.async.annotation.AsyncTask;
 import com.meng.commonspring.async.bean.ControlContext;
 import com.meng.commonspring.async.bean.ScheduleInfo;
@@ -10,9 +11,8 @@ import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -28,27 +28,31 @@ import java.util.concurrent.*;
  * @author ZuoHao
  * @date 2021/3/12
  */
+@Component
 public class IExecutorFactory {
-    private final static Logger LOGGER = LoggerFactory.getLogger(IExecutorFactory.class);
 
-    @Resource
-    private AsyncConfig asyncConfig;
     @Resource
     private ApplicationContext applicationContext;
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(IExecutorFactory.class);
+
     /**
-     * 线程池集合
+     * 线程池
      */
     private static Map<String, IExecutor> map = new HashMap<>();
 
+
+    @Resource
+    private AsyncConfig asyncConfig;
+
     /**
-     * 获取某个线程池执行期
+     * 获取线程池
      *
-     * @param name
+     * @param
      * @return
      */
-    public static IExecutor get(String name) {
-        return map.get(name);
+    public static IExecutor get(String module) {
+        return map.get(module);
     }
 
     public static Set<String> getAllExecutorName() {
@@ -69,20 +73,6 @@ public class IExecutorFactory {
         }
 
         checkValid();
-    }
-
-    public void shutdown() {
-        for (IExecutor iExecutor : map.values()) {
-            iExecutor.getExcutor().shutdown();
-        }
-        for (IExecutor iExecutor : map.values()) {
-            try {
-                iExecutor.getExcutor().awaitTermination(5, TimeUnit.SECONDS);
-            } catch (InterruptedException e) {
-                LOGGER.error(e.getMessage(), e);
-            }
-        }
-        LOGGER.info("Async component shut down complete!");
     }
 
     /**
@@ -112,6 +102,7 @@ public class IExecutorFactory {
         int coreSize = poolParam.getCoreSize();
         // 等待队列增加个10000大小限制，避免无界
         int queueSize = poolParam.getQueueSize() == 0 ? 10000 : poolParam.getQueueSize();
+        int reportType = poolParam.getReportType() == 0 ? 1 : poolParam.getReportType();
         long schedulePeriod = poolParam.getSchedulePeriod();
         long scheduleDelay = poolParam.getScheduleDelay();
         int rejectType = poolParam.getRejectType();
@@ -121,13 +112,16 @@ public class IExecutorFactory {
         ExecutorService executor = null;
         if (IExecutor.isSchedule(schedulePeriod, scheduleDelay)) {
 
-            executor = new ScheduledThreadPoolExecutor(coreSize, Executors.defaultThreadFactory(), IAbortPolicyFactory.getInstance(rejectType));
+            //ttl包装
+            executor = TtlExecutors.getTtlScheduledExecutorService(new ScheduledThreadPoolExecutor(coreSize, Executors.defaultThreadFactory(), IAbortPolicyFactory.getInstance(rejectType)));
 
         } else {
             BlockingQueue<Runnable> queue = queueSize > 0 ? new ArrayBlockingQueue<Runnable>(queueSize) : new LinkedBlockingQueue<Runnable>();
 
             executor = new ThreadPoolExecutor(coreSize, coreSize, 0L, TimeUnit.MILLISECONDS, queue, Executors.defaultThreadFactory(), IAbortPolicyFactory.getInstance(rejectType));
 
+            //ttl包装
+            executor = TtlExecutors.getTtlExecutorService(executor);
         }
 
         return new IExecutor(projectName, moduleName, executor, new ScheduleInfo(schedulePeriod, scheduleDelay, scheduleUnit));
@@ -135,7 +129,8 @@ public class IExecutorFactory {
 
 
     public static void main(String[] args) throws Exception {
-        ExecutorService executorService = new ThreadPoolExecutor(2, 2, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>(), Executors.defaultThreadFactory(), IAbortPolicyFactory.getInstance());
+        ExecutorService executor = new ThreadPoolExecutor(2, 2, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>(), Executors.defaultThreadFactory(), IAbortPolicyFactory.getInstance());
+        ExecutorService executorService = TtlExecutors.getTtlExecutorService(executor);
         ControlContext.add("t2", "vvv");
         for (int i = 1; i <= 5; i++) {
             ControlContext.add("t1", i + "");
@@ -154,11 +149,12 @@ public class IExecutorFactory {
                     } catch (Exception e) {
                     }
                     System.out.println(n + " ==" + ControlContext.get("t1", String.class));
+                    ;
                     ControlContext.add("t2", "ss");
                 }
             });
+
             Thread.sleep(1000);
         }
     }
 }
-
