@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.meng.common.spring.async.starter.AsyncConfiguration
