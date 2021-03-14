@@ -5,6 +5,7 @@ import com.meng.common.spring.async.utils.OSUtils;
 import java.util.UUID;
 
 /**
+ * 保存线程信息
  * @author ZuoHao
  * @date 2021/3/12
  */
