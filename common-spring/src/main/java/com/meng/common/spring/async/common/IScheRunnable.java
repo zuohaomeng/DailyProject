@@ -21,6 +21,9 @@ public abstract class IScheRunnable extends IRunnable {
         super.run();
     }
 
+    /**
+     * 刷新当前活跃线程数据
+     */
     public void freshThreadInfo() {
         threadInfo.setId(UUID.randomUUID().toString());
         threadInfo.setStartTime(System.currentTimeMillis());

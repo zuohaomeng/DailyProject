@@ -1,4 +1,4 @@
-package com.meng.common.spring.async.starter;
+package com.meng.common.spring.starter;
 
 import com.meng.common.spring.async.config.PoolParam;
 import org.springframework.beans.factory.annotation.Value;

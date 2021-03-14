@@ -26,9 +26,7 @@ public abstract class ICallable<T> implements Callable<T> {
         try {
             Thread.currentThread().setName(threadInfo.getThreadName());
             ienter();
-            T result = icall();
-
-            return result;
+            return icall();
         } finally {
             iexst();
         }
