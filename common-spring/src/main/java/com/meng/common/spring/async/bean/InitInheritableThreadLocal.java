@@ -17,15 +17,20 @@ public class InitInheritableThreadLocal<T extends Map<String, Object>> extends T
         return new HashMap<String, Object>();
     }
 
+    /**
+     * 创建子类时的属性拷贝
+     * @param parentValue
+     * @return
+     */
     @Override
     public Map<String, Object> childValue(Map<String, Object> parentValue) {
         if (parentValue == null) {
             return null;
         }
-        //浅拷贝
+        //浅拷贝，只是拷贝了HashMap这个类
         return (Map<String, Object>) ((HashMap<String, Object>) parentValue).clone();
     }
-
+    //因为默认使用的是浅拷贝，所有重写copy方法，进行深copy
     @Override
     public Map<String, Object> copy(Map<String, Object> parentValue) {
         if (parentValue == null) {
