@@ -1,4 +1,4 @@
-package com.meng.daily.javabase.proxy;
+package com.meng.daily.javabase.proxy.jdk;
 
 /**
  * @Description

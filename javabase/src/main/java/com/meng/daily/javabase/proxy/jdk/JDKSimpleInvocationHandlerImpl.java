@@ -1,4 +1,5 @@
-package com.meng.daily.javabase.proxy;
+package com.meng.daily.javabase.proxy.jdk;
+
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -9,7 +10,7 @@ import java.lang.reflect.Proxy;
  * @Author ZuoHao
  * @Date 2020/8/31 16:14
  */
-public class JDKSimpleInvocationHandlerImpl implements InvocationHandler {
+public class JDKSimpleInvocationHandlerImpl<T> implements InvocationHandler {
 
     private SimpleInterface target;
 
@@ -18,7 +19,7 @@ public class JDKSimpleInvocationHandlerImpl implements InvocationHandler {
     }
 
 
-    public <T> T getProxy() {
+    public T getProxy() {
         return (T) Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), this);
     }
 

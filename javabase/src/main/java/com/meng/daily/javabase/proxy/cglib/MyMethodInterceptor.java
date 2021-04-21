@@ -1,4 +1,4 @@
-package com.meng.daily.javabase.proxy;
+package com.meng.daily.javabase.proxy.cglib;
 
 
 import net.sf.cglib.proxy.MethodInterceptor;

@@ -1,4 +1,4 @@
-package com.meng.daily.javabase.proxy;
+package com.meng.daily.javabase.proxy.cglib;
 
 /**
  * @Description cglib动态代理父类
@@ -7,7 +7,7 @@ package com.meng.daily.javabase.proxy;
  */
 public class Animal {
 
-    void sleep() {
+    public void sleep() {
         System.out.println(">>>>>>>>>>>>sleep<<<<<<<<<<");
     }
 }

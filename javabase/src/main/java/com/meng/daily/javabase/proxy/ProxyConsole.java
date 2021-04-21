@@ -1,9 +1,10 @@
 package com.meng.daily.javabase.proxy;
 
+import com.meng.daily.javabase.proxy.cglib.Animal;
+import com.meng.daily.javabase.proxy.cglib.MyMethodInterceptor;
+import com.meng.daily.javabase.proxy.jdk.*;
 import net.sf.cglib.core.DebuggingClassWriter;
 import net.sf.cglib.proxy.Enhancer;
-
-import java.lang.reflect.Proxy;
 
 /**
  * @Description 动态代理控制器
@@ -12,8 +13,8 @@ import java.lang.reflect.Proxy;
  */
 public class ProxyConsole {
     public static void main(String[] args) {
-//        JDKProxy();
-        CglibProxy();
+        JDKProxy();
+//        CglibProxy();
 
     }
 
@@ -41,7 +42,7 @@ public class ProxyConsole {
         System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
 
         SimpleInterface simpleInterface = new SimpleInterfaceImpl();
-        SimpleInterface proxy = new JDKSimpleInvocationHandlerImpl(simpleInterface).getProxy();
+        SimpleInterface proxy = new JDKSimpleInvocationHandlerImpl<SimpleInterface>(simpleInterface).getProxy();
 
         proxy.sayHello();
     }
