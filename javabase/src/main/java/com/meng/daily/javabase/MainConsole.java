@@ -11,7 +11,8 @@ import java.util.stream.Collectors;
  */
 public class MainConsole {
     public volatile static boolean stop = false;
+
     public static void main(String[] args) throws InterruptedException {
-        System.out.println(87978090%4 );
     }
+
 }
