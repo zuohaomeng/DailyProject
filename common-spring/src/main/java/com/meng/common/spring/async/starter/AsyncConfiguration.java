@@ -1,4 +1,4 @@
-package com.meng.common.spring.starter;
+package com.meng.common.spring.async.starter;
 
 import com.meng.common.spring.async.config.AsyncConfig;
 import org.springframework.beans.factory.annotation.Autowired;
