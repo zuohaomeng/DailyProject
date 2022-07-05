@@ -1,16 +1,13 @@
-package com.meng.daily.javabase;
+package com.meng.me;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-/**
- * @author zuohao
- */
 @SpringBootApplication
-public class JavabaseApplication {
-    private int i = 1;
+public class LeetcodeApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(JavabaseApplication.class, args);
+        SpringApplication.run(LeetcodeApplication.class, args);
     }
+
 }
