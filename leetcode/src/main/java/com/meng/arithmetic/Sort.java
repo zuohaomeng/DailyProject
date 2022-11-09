@@ -13,7 +13,7 @@ public class Sort {
     private static int[] list = {46, 79, 56, 38, 40, 84};
 
     public static void main(String[] args) {
-        Random random = new Random(49);
+//        Random random = new Random(49);
 //        list = new int[LIST_LENGTH];
 //        for (int i = 0; i < list.length; i++) {
 //            list[i] = random.nextInt(100);
@@ -21,15 +21,16 @@ public class Sort {
 
 //        System.out.println("原始的");
 //        printList();
-        Selection2();
+//        Selection2();
 //        Insertion2();
 //        Shell2();
         //Merge2();
 //        Quick2();
+        Quick3();
         //现在的
-//        System.out.println("现在的");
-//        printList();
-//        System.out.println("是否有序: " + isSort());
+        System.out.println("现在的");
+        printList();
+        System.out.println("是否有序: " + isSort());
         System.out.println(rank2(79));
     }
 
@@ -91,14 +92,38 @@ public class Sort {
         return j;
     }
 
+    private static void Quick3() {
+        QuickSort3(0, LIST_LENGTH - 1);
+    }
 
+    private static void QuickSort3(int lo, int hi) {
+        if (lo >= hi) {
+            return;
+        }
+        int mid = partition3(lo, hi);
+        QuickSort3(lo, mid - 1);
+        QuickSort3(mid + 1, hi);
+    }
 
-
-
-
+    private static int partition3(int lo, int hi) {
+        int temp = list[lo];
+        while (lo < hi) {
+            while (lo < hi && list[hi] >= temp){
+                hi--;
+            }
+            list[lo] = list[hi];
+            while (lo < hi && list[lo] <= temp){
+                lo++;
+            }
+            list[hi] = list[lo];
+        }
+        list[lo] = temp;
+        return lo;
+    }
     /**
      * 归并排序
      */
+
     private static void Merge2() {
         aux = new int[LIST_LENGTH];
         Merge2(0, LIST_LENGTH - 1);

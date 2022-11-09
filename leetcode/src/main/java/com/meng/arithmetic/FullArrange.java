@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * 全排列
+ *
  * @author ZuoHao
  * @date 2022/1/30
  */
@@ -18,12 +19,8 @@ public class FullArrange {
     public String[] permutation(String s) {
         ArrayList<String> list = new ArrayList<>();
         char[] chars = s.toCharArray();
-        fullArrange(list, chars, 0, chars.length-1);
-        String[] resultList = new String[list.size()];
-        for (int i = 0; i < list.size(); i++) {
-            resultList[i] = list.get(i);
-        }
-        return resultList;
+        fullArrange(list, chars, 0, chars.length - 1);
+        return list.toArray(new String[0]);
     }
 
     private void fullArrange(List<String> list, char[] chars, int start, int end) {
@@ -35,7 +32,7 @@ public class FullArrange {
                 swap(chars, start, i);
                 fullArrange(list, chars, start + 1, end);
                 //复原数组
-                swap(chars,start,i);
+                swap(chars, start, i);
             }
         }
     }

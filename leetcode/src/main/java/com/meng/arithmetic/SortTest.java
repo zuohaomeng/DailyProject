@@ -67,6 +67,21 @@ public class SortTest {
         return mid;
     }
 
+    private static int rank(int key, int left, int right) {
+
+        while (left <= right) {
+            int mid = left + ((right - left) >> 1);
+            if (key == list[mid]) {
+                return mid;
+            }
+            if (list[mid] > key)
+                right = mid - 1;
+            if (list[mid] < key)
+                left = mid + 1;
+
+        }
+        return -1;
+    }
     /**
      * 二分查找
      * @param a
@@ -233,6 +248,8 @@ public class SortTest {
         exchange(j, le);
         return j;
     }
+
+
 
     private static void exchange(int a, int b) {
         int t = list[a];
