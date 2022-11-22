@@ -8,7 +8,8 @@ package com.meng.daily.javabase;
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
-
+        System.out.println(200_000 * 0.06/12);
+//        System.out.println(300*600);
     }
 
 
