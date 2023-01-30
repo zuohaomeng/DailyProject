@@ -13,30 +13,30 @@ public class SortTest {
 
     public static void main(String[] args) {
         //--------------------------二分查找--------------------
-//        Arrays.sort(list);
-//        printList();
-//        System.out.println(rank2(1));
+        Arrays.sort(list);
+        printList();
+        System.out.println(rank2(46));
         //--------------------------1.选择排序
-//        selectionSort();
-//        printList();
+        selectionSort();
+        printList();
 
         //--------------------------2.冒泡排序
-//        bubbleSort();
-//        printList();
+        bubbleSort();
+        printList();
 
         //--------------------------3.插入排序
-//        insertionSort();
-//        printList();
+        insertionSort();
+        printList();
         insertionSort2();
         printList();
 
         //---------------------------4.归并排序
-//        mergeSort();
-//        printList();
+        mergeSort();
+        printList();
 
         //----------------------------5.快速排序
-//        quickSort();
-//        printList();
+        quickSort();
+        printList();
 
     }
 
@@ -80,30 +80,6 @@ public class SortTest {
                 left = mid + 1;
 
         }
-        return -1;
-    }
-    /**
-     * 二分查找
-     * @param a
-     * @param n
-     * @param value
-     * @return
-     */
-    public int bsearch(int[] a, int n, int value) {
-        int low = 0;
-        int high = n - 1;
-
-        while (low <= high) {
-            int mid = (low + high) / 2;
-            if (a[mid] == value) {
-                return mid;
-            } else if (a[mid] < value) {
-                low = mid + 1;
-            } else {
-                high = mid - 1;
-            }
-        }
-
         return -1;
     }
 
@@ -157,7 +133,7 @@ public class SortTest {
 
     private static void insertSort() {
         for (int i = 1; i < list.length; i++) {
-            for (int j = i ; j > 0; j--) {
+            for (int j = i; j > 0; j--) {
                 if (list[j - 1] > list[j]) {
                     exchange(j - 1, j);
                 } else {
@@ -189,7 +165,7 @@ public class SortTest {
      * 归并排序
      */
     private static void mergeSort() {
-        mergeSort(0,LIST_LENGTH-1);
+        mergeSort(0, LIST_LENGTH - 1);
     }
 
     private static void mergeSort(int lo, int hi) {
@@ -199,18 +175,18 @@ public class SortTest {
         int mid = lo + ((hi - lo) >> 1);
         mergeSort(lo, mid);
         mergeSort(mid + 1, hi);
-        mergeSort(lo,mid,hi);
+        mergeSort(lo, mid, hi);
     }
 
     private static void mergeSort(int lo, int mid, int hi) {
-       int i = lo,j = mid+1;
+        int i = lo, j = mid + 1;
         for (int k = lo; k <= hi; k++) {
             aux[k] = list[k];
         }
-        for (int k = lo;k <= hi; k++) {
-            if(i == mid+1) list[k] = aux[j++];
-            else if(j == hi+1) list[k] = aux[i++];
-            else if(aux[i] <=aux[j]) list[k] = aux[i++];
+        for (int k = lo; k <= hi; k++) {
+            if (i == mid + 1) list[k] = aux[j++];
+            else if (j == hi + 1) list[k] = aux[i++];
+            else if (aux[i] <= aux[j]) list[k] = aux[i++];
             else list[k] = aux[j++];
         }
     }
@@ -248,7 +224,6 @@ public class SortTest {
         exchange(j, le);
         return j;
     }
-
 
 
     private static void exchange(int a, int b) {

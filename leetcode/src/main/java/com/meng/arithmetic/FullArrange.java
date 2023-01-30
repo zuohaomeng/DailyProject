@@ -26,14 +26,14 @@ public class FullArrange {
     private void fullArrange(List<String> list, char[] chars, int start, int end) {
         if (start == end) {
             list.add(new String(chars));
-        } else {
-            for (int i = start; i <= end; i++) {
-                //1，2，3的全排列这块相当于将其中一个提了出来，下次递归从start+1开始
-                swap(chars, start, i);
-                fullArrange(list, chars, start + 1, end);
-                //复原数组
-                swap(chars, start, i);
-            }
+            return;
+        }
+        for (int i = start; i <= end; i++) {
+            //1，2，3的全排列这块相当于将其中一个提了出来，下次递归从start+1开始
+            swap(chars, start, i);
+            fullArrange(list, chars, start + 1, end);
+            //复原数组
+            swap(chars, start, i);
         }
     }
 
