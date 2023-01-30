@@ -7,8 +7,8 @@ import java.util.Arrays;
  * @date 2022/1/11
  */
 public class SortTest {
-    private final static int LIST_LENGTH = 6;
     private static int[] list = {46, 79, 56, 38, 40, 84};
+    private final static int LIST_LENGTH = list.length;
     private static int[] aux = new int[list.length];
 
     public static void main(String[] args) {
@@ -35,7 +35,6 @@ public class SortTest {
         printList();
 
         //----------------------------5.快速排序
-        quickSort();
         printList();
 
     }
@@ -189,40 +188,6 @@ public class SortTest {
             else if (aux[i] <= aux[j]) list[k] = aux[i++];
             else list[k] = aux[j++];
         }
-    }
-
-    /**
-     * 快速排序
-     */
-    private static void quickSort() {
-        quickSort(0, list.length - 1);
-    }
-
-    private static void quickSort(int le, int ri) {
-        if (le >= ri) return;
-        int mid = partition(le, ri);
-        quickSort(le, mid - 1);
-        quickSort(mid + 1, ri);
-    }
-
-    private static int partition(int le, int ri) {
-        int i = le;
-        int j = ri + 1;
-        int k = list[le];
-        while (i < j) {
-            while (list[++i] <= k) {
-                if (i == ri) break;
-            }
-            while (list[--j] > k) {
-                if (j == le) break;
-            }
-            if (i >= j) {
-                break;
-            }
-            exchange(i, j);
-        }
-        exchange(j, le);
-        return j;
     }
 
 
