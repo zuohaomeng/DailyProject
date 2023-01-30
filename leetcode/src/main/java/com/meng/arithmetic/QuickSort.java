@@ -31,19 +31,11 @@ public class QuickSort {
     }
 
     private static int partition(int lo, int hi) {
-        int k = nums[lo];
-        int i = lo + 1;
-        int j = hi;
+        int k = nums[lo], i = lo + 1, j = hi;
         while (true) {
-            while (i <= j && nums[i] <= k) {
-                i++;
-            }
-            while (i <= j && nums[j] > k) {
-                j--;
-            }
-            if (i >= j) {
-                break;
-            }
+            while (i <= j && nums[i] <= k) i++;
+            while (i <= j && nums[j] > k) j--;
+            if (i >= j) break;
             swap(i, j);
         }
         swap(j, lo);
